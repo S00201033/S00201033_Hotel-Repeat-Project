@@ -1,1 +1,149 @@
-<p>dashboard works!</p>
+<div class="container">
+
+    <div class="row">
+  
+        <div class="text-center mt-5 " >
+          <div class="col-md-12  col-sm-12 col-12 ">
+            <h1 class="text-center">Welcome</h1>
+            <h3 class="text-center">Hotel Room Booking Admin Dashboard</h3>
+          </div>
+        </div>
+    </div>
+  
+    <div class="row shadow-lg p-3 mb-5 bg-white rounded room-managment">
+      <h3 class="text-center m-4">Hotel Rooms Managment</h3>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#roomModal">Add New Room</button>
+  
+      <div class="table-responsive" *ngIf="tableData && tableData.length">
+        <table datatable [dtOptions]="dtOptions" class="dataTable" id="room">
+          <thead style="background-color: #2d7ef7; color: white; height: 50px;">
+            <tr>
+              <th>Image</th>
+              <th>Room Type</th>
+              <th>Location</th>
+              <th>Rent Per Day</th>
+              <th>Size</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="spaceUnder" *ngFor="let room of tableData">
+              <td style="min-width: 180px;"> <img width="40px" height="40px" src="/assets/roomA.webp"></td>
+              <td style="min-width: 150px;">{{room.title }}</td>
+              <td>{{room.location }}</td>
+              <td>{{room.rentPerDay | currency }}</td>
+              <td style="min-width: 150px;">{{room.size }}</td>
+              <td style="min-width: 180px;">{{room.description }}</td>
+              <td style="min-width: 180px;"><button class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#roomModal" (click)="openEditRoomModal(room)">Edit</button>
+                <button class="btn btn-danger btn-xs m-2" (click)="deleteRoom(room.roomId)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+  
+  
+      <p *ngIf="tableData && !tableData.length">No Rooms Data Found</p>
+  
+    </div>
+  
+    <div class="row shadow-lg p-3 mb-5 bg-white rounded room-managment">
+      <h3 class="text-center m-4">Room Booking Managment</h3>
+  
+      <div class="table-responsive" *ngIf="tableData2 && tableData2.length">
+        <table datatable [dtOptions]="dtOptions" class="dataTable" id="example">
+          <thead style="background-color: #2d7ef7; color: white; height: 50px;">
+            <tr>
+              <th>Image</th>
+              <th>User Email</th>
+              <th>From Date</th>
+              <th>To Date</th>
+              <th>Room Title</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="spaceUnder" *ngFor="let booking of tableData2">
+              <td style="min-width: 180px;"> <img width="40px" height="40px" src="/assets/roomB.webp"></td>
+              <td style="min-width: 180px;">{{booking.userId }}</td>
+              <td>{{booking.fromDate }}</td>
+              <td>{{booking.toDate }}</td>
+              <td style="min-width: 150px;">{{getRoomTitleById(booking.roomId) }}</td>
+              <td>{{booking.description }}</td>
+              <td  style="min-width: 180px;"><button class="btn btn-primary btn-xs">Edit</button>
+                <button class="btn btn-danger btn-xs m-2" (click)="deleteBooking(booking)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+  
+  
+      <p *ngIf="tableData2 && !tableData2.length">No Booking Data Found</p>
+  
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Model -->
+  <div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="roomModalLabel" *ngIf="newRoomData.roomId == '0'">Add New Room </h5>
+          <h5 class="modal-title" id="roomModalLabel" *ngIf="newRoomData.roomId != '0'">Update Room </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeEditRoomModal()"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Enter Room Data <small>All Fields Are Required</small></h4>
+          <div class="row">
+            <div class="col">
+              <input class="form-control" placeholder="title" [(ngModel)]="newRoomData.title">
+            </div>
+            <div class="col">
+              <input class="form-control" placeholder="location" [(ngModel)]="newRoomData.location">
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col">
+              <input class="form-control" placeholder="size" [(ngModel)]="newRoomData.size">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Rent Per Day" [(ngModel)]="newRoomData.rentPerDay">
+            </div>
+            
+          </div><br>
+         
+          <div class="row">
+            <div class="col">
+              <input class="form-control" placeholder="class" [(ngModel)]="newRoomData.class">
+            </div>
+            <div class="col">
+              <input type="text-area" class="form-control" placeholder="description" [(ngModel)]="newRoomData.description">
+            </div>
+            <div class="col">
+              <input type="file" (change)="OnFileSelected($event)" class="form-control" [(ngModel)]="newRoomData.imgUrl">
+          </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeEditRoomModal()">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="newRoomData.roomId == '0'" (click)="addNewRoom()">Save</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="newRoomData.roomId != '0'" (click)="updateRoomDetail()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

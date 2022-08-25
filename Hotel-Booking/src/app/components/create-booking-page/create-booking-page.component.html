@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="form mt-5 mb-5 p-5">
+      <b>Please Fill out below Fields for Booking Room</b>
+      <form #form="ngForm">
+        <div class="row mt-4">
+          <div class="col-5">
+              <label>Booking Type</label>
+              <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="bookingType">
+          </div>
+          <div class="col-5">
+              <label>From Date</label>
+              <input type="date" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="fromDate">
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-5">
+              <label>To Date</label>
+              <input type="date" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="toDate">
+          </div>
+          <div class="col-5">
+              <label>Description</label>
+              <input type="textarea" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="description">
+          </div>
+          <div class="col-5">
+            <label>Description</label>
+            <input type="textarea" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="description">
+        </div>
+          
+        </div>
+        <div class="row mt-3">
+          <div class="col-sm-12 mb-2">
+            <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)">
+            </re-captcha>
+            <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+              <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-5">
+            <button mat-raised-button color="primary" (click)="createBooking()">Submit</button>
+          </div>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

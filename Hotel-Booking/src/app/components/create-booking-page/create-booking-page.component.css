@@ -1,0 +1,9 @@
+.form{
+    background-color: rgb(244, 250, 250);
+  }
+  
+  re-captcha.is-invalid > div {
+    border: 1px solid #dc3545 ;
+    border-radius: 0.2rem;
+  }
+  

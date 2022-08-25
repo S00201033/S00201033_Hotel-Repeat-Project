@@ -1,0 +1,53 @@
+.tabe-section{
+    margin-bottom: 50px;
+}
+
+
+
+table {
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  td, th {
+    width: 15%;
+  }
+  .example-card {
+    max-width: 300px;
+  }
+
+  .mat-header-cell{
+    background-color: rgb(63, 45, 218);
+    color: white;
+  }
+
+
+
+
+  .page-item{
+    margin-left: 20px;
+    margin-top: 50px;
+  }
+
+  tr.spaceUnder>td {
+    padding-top: 0.6em;
+  }
+
+  .sort:hover{
+    cursor: pointer;
+  }
+  
+  .table-responsive {
+      font-size:17px !important;
+  }
+ 
+  .page-item:hover{
+    cursor: pointer;
+  }
+  
+

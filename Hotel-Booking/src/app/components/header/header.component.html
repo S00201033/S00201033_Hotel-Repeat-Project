@@ -1,0 +1,70 @@
+
+
+<header class="header-wrapper snipcss-RdNe1" style="background-color: rgb(245, 240, 240);">
+    <div class="header-section section" id="header-section" name="Header">
+      <div class="widget Header" data-version="2" id="Header1">
+        <div class="header-widget">
+          <a class="header-logo-image snip-a" href="/">
+            <img alt="Room Booking" class="blur-up lazyloading snip-img"  height="72" src="/assets/logo.png" width="280">
+  
+          </a>
+        </div>
+      </div>
+      <div class="widget LinkList" data-version="2" id="LinkList99">
+        <div class="menu-widget" id="desktopmenu">
+          <span class="menu-item">
+          </span>
+          <span class="menu-item">
+            <a href="/" class="snip-a">
+              Home
+            </a>
+          </span>
+          <span class="menu-item">
+            <a *ngIf="identity && identity.role == 'client'" href="/my-bookings" class="snip-a">
+              My Bookings
+            </a>
+          </span>
+          <span class="menu-item">
+            <a *ngIf="identity && identity.role == 'admin'"  href="/dashboard" class="snip-a">
+              Admin Dashboard
+            </a>
+          </span>
+          <span class="menu-item">
+            <a href="/" class="snip-a">
+              Learn More
+            </a>
+          </span>
+          <span class="menu-item">
+            <a href="/" class="snip-a">
+              Contact
+            </a>
+          </span>
+          <span class="menu-item">
+          </span>
+          <span class="menu-item" *ngIf="!identity">
+            <a href="/login" class="snip-a">
+              <span id="login">
+                Login
+              </span>
+            </a>
+          </span>
+          <span class="menu-item" *ngIf="!identity">
+            <a href="/register" class="snip-a">
+              Sign Up
+            </a>
+          </span>
+          <span class="menu-item dropdown" *ngIf="identity">
+            <span class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/assets/user.png" width="35px" height="35px"> {{ identity && identity.firstName ? identity.firstName +" "+ identity.lastName : 'Peter John' }}
+            </span>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">My Account</a></li>
+              <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+            </ul>
+          </span>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+  

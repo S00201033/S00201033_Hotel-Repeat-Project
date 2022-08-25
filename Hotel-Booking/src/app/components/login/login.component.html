@@ -1,1 +1,93 @@
-<p>login works!</p>
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:#F0F5F9;background-size: cover; background-position: center;">
+    <div class="auth-box card snipcss-LUKoO">
+     
+      <div id="loginform">
+        <div class="logo">
+          <a class="db" href="/">
+            <img alt="logo" src="/assets/logo.png" width="220px" class="snip-img">
+          </a>
+          <h5 class="font-medium m-t-40 snip-h5">
+            <b >Login to Room Booking System</b>
+          </h5>
+          <br>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <form class="form-horizontal " id="loginform" novalidate="">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  
+                </div>
+                <input [(ngModel)]="email" aria-describedby="basic-addon1" aria-label="Email" class="form-control form-control-lg " name="email" type="text" placeholder=" Email">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  
+                </div>
+                <input [(ngModel)]="password" aria-describedby="basic-addon1" aria-label="Password" class="form-control form-control-lg ng-untouched " formcontrolname="password" name="password" type="password" placeholder=" Password">
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" id="customCheck1" type="checkbox">
+                    <label class="custom-control-label" for="customCheck1">
+                      Remember me
+                    </label>
+                    <a class="text-dark float-right snip-a" id="to-recover" routerlinkactive="router-link-active" href="/login">
+                      <em class="fa fa-lock m-r-5">
+                      </em>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <div class="col-xs-12 ">
+                  <button (click)="signin()" [disabled]="!(email.length>0)  || !(password.length >0)" class="btn btn-block btn-lg btn-info ng-star-inserted snip-button" type="button ">
+                    Log In
+                  </button>
+                </div>
+                <p class="text-danger" *ngIf="invalidValidLoginAttempt">Invalid email or password.</p>
+              </div>
+              <div class="form-group m-b-0 m-t-10 ">
+              </div>
+              <div class="form-group m-b-0 m-t-10 ">
+                <div class="col-sm-12 text-center ">
+                  Don't have an account?
+                  <a class="text-info m-l-5 snip-a" href="/register">
+                    <strong>
+                      Sign Up
+                    </strong>
+                  </a>
+                </div>
+              </div>
+            </form>
+            <!-- <div class="formGroup">
+              <button type="button" (click)="googleAuth()">
+                Log in with Google
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+      <p style="color: white">Please Wait. </p>
+      </ngx-spinner>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
