@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 import { NgxSpinnerModule } from "ngx-spinner";
 
@@ -37,6 +37,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { CommonModule } from '@angular/common';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ContactService } from './services/contact.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,10 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     LoginComponent,
     SignupComponent,
     MyBookingsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    AboutusComponent,
+    ContactFormComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +72,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     MatCardModule,
     HttpClientModule,
     DataTablesModule,
+    ReactiveFormsModule,
+    BrowserModule,
     RecaptchaModule,
     RecaptchaFormsModule,
     NgxSpinnerModule,
@@ -77,7 +85,10 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     AngularFireDatabaseModule,
     provideStorage(() => getStorage())
   ],
+ 
   providers: [
+    ContactService,
+
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
@@ -85,6 +96,6 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
       } as RecaptchaSettings,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,ContactFormComponent]
 })
 export class AppModule { }

@@ -6,6 +6,8 @@ import { CreateBookingPageComponent } from './components/create-booking-page/cre
 import { SignupComponent } from './components/signup/signup.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 const routes: Routes = [
   {path:'', component: LandingPageComponent},// canActivate:[OnlyClient]},
@@ -13,6 +15,11 @@ const routes: Routes = [
   {path:'my-bookings', component: MyBookingsComponent},
   {path:'login', component: LoginComponent},
   {path:'register', component: SignupComponent},
+  {path:'aboutus', component: AboutusComponent},
+  {path:'contact-form', component: ContactFormComponent},
+
+  
+
   // {path:'prediction-result/:id', component: PredictionResultComponent},
   {path:'create/:roomId', component: CreateBookingPageComponent}
 ];
