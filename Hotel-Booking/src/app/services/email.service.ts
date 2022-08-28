@@ -11,7 +11,7 @@ export class EmailService {
 
   constructor(private httpreq:HttpClient) { }
 
-  sendMessage(body: { email: any; }){
+  sendMessage(body: { email: any; subject: any }){
     let headers = {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json'

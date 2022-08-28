@@ -15,18 +15,25 @@ export class ContactFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.nodeMailerForm = this.formBuilder.group({
-      email:[null,[Validators.required]]
+      email:[null,[Validators.required]],
+      subject:[null,[Validators.required]]
+
     });
   }
 
   sendMail(){
     let email = this.nodeMailerForm.value.email;
+    let subject = this.nodeMailerForm.value.subject;
+
     let reqObj = {
-      email:email
+      email:email,
+      subject:subject
     }
     this.emailService.sendMessage(reqObj).subscribe(data=>{
       console.log(data);
     })
+    alert("Email Sent!")
+
   }
 
 }
