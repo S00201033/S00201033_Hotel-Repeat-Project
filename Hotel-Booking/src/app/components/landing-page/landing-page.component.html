@@ -33,10 +33,10 @@
       <p>Quick Find Room and Book to Stay</p>
       <ul class="text-center" style="display: flex; list-style: none;">
         <li>
-          <input type="datetime-local" class="form-control" placeholder="">
+            <input #selectedDate type="date" class="form-control" placeholder="">
         </li>
         <li>
-          <button class="btn btn-primary">Search</button>
+            <button class="btn btn-primary" (click)="search(selectedDate.value)">Search</button>
         </li>
       </ul>
     </div>
@@ -47,8 +47,8 @@
   
     <div class="row">
   
-      <div class="col-4" style="margin-top: 10px" *ngFor="let room of roomsList">
-        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem; margin-left:30px;">
+        <div class="col-4" style="margin-top: 10px" *ngFor="let room of displayRoomsList">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem; margin-left:30px;">
             <img class="card-img-top" [src]="room.imageUrl ? room.imageUrl : '/assets/roomA.webp'" alt="Card image cap" width="286px" height="150px">
             <div class="card-body">
                 <h5 class="card-title">{{room.title}}</h5>
@@ -60,7 +60,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Room Class:</b> {{room.class}}</li>
-                <li class="list-group-item"><b>Price:</b> {{room.rentPerDay}}$/Day</li>
+                <li class="list-group-item"><b>Price:</b> €{{room.rentPerDay}}/Day</li>
             </ul>
             <div class="card-body">
                 <a  class="ml-2 btn btn-sm btn-success float-right" (click)="goToCreateBooking(room.roomId)" >Book Now</a>

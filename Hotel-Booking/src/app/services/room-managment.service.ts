@@ -57,4 +57,9 @@ export class RoomManagmentService {
   deleteBookingById(data:any){
     return this.afs.collection("Rooms").doc(data.roomId).collection("Bookings").doc(data.bookingId).delete()
   }
+  filterBookings(date:any){
+    return this.afs.collectionGroup('Bookings',
+      ref => ref.where('fromDate', '!=', date))
+    .get()
+  }
 }

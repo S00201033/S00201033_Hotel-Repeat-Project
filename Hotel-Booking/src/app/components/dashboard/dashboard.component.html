@@ -32,7 +32,7 @@
                 <td style="min-width: 180px;"> <img width="40px" height="40px" [src]="room.imageUrl ? room.imageUrl : '/assets/roomA.webp'"></td>
                 <td style="min-width: 150px;">{{room.title }}</td>
               <td>{{room.location }}</td>
-              <td>{{room.rentPerDay | currency }}</td>
+              <td>{{room.rentPerDay | currency:'EUR':true }}</td>
               <td style="min-width: 150px;">{{room.size }}</td>
               <td style="min-width: 180px;">{{room.description }}</td>
               <td style="min-width: 180px;"><button class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#roomModal" (click)="openEditRoomModal(room)">Edit</button>
