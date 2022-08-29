@@ -83,6 +83,10 @@ export class MyBookingsComponent implements OnInit {
     return this.roomsList.find(r => r.roomId == roomId)?.title ?? "Room deleted"
   }
 
+  getRoomImageById(roomId:any){
+    return this.roomsList.find(r => r.roomId == roomId)?.imageUrl ?? "/assets/roomB.webp"
+  }
+
   openBookingUpdateModel(){
 
   }

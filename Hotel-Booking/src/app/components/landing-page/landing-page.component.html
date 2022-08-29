@@ -49,7 +49,7 @@
   
       <div class="col-4" style="margin-top: 10px" *ngFor="let room of roomsList">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem; margin-left:30px;">
-            <img class="card-img-top" src="/assets/roomA.webp" alt="Card image cap" width="286px" height="150px">
+            <img class="card-img-top" [src]="room.imageUrl ? room.imageUrl : '/assets/roomA.webp'" alt="Card image cap" width="286px" height="150px">
             <div class="card-body">
                 <h5 class="card-title">{{room.title}}</h5>
                 <span class="fa fa-star checked"></span>
@@ -63,7 +63,6 @@
                 <li class="list-group-item"><b>Price:</b> {{room.rentPerDay}}$/Day</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">Check Out</a>
                 <a  class="ml-2 btn btn-sm btn-success float-right" (click)="goToCreateBooking(room.roomId)" >Book Now</a>
             </div>
         </div>

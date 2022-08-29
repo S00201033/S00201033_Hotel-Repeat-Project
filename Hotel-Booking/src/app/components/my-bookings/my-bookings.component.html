@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr class="spaceUnder" *ngFor="let booking of tableData">
-            <td style="min-width: 180px;"> <img width="40px" height="40px" src="/assets/roomC.webp"></td>
+            <td style="min-width: 180px;"> <img width="40px" height="40px" [src]="getRoomImageById(booking.roomId)"></td>
             <td style="min-width: 180px;">{{currentUser.firstName+" "+currentUser.lastName }}</td>
             <td>{{getRoomTitleById(booking.roomId) }}</td>
             <td>{{booking.userId }}</td>

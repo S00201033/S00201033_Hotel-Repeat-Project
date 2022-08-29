@@ -29,14 +29,14 @@
           </thead>
           <tbody>
             <tr class="spaceUnder" *ngFor="let room of tableData">
-              <td style="min-width: 180px;"> <img width="40px" height="40px" src="/assets/roomA.webp"></td>
-              <td style="min-width: 150px;">{{room.title }}</td>
+                <td style="min-width: 180px;"> <img width="40px" height="40px" [src]="room.imageUrl ? room.imageUrl : '/assets/roomA.webp'"></td>
+                <td style="min-width: 150px;">{{room.title }}</td>
               <td>{{room.location }}</td>
               <td>{{room.rentPerDay | currency }}</td>
               <td style="min-width: 150px;">{{room.size }}</td>
               <td style="min-width: 180px;">{{room.description }}</td>
               <td style="min-width: 180px;"><button class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#roomModal" (click)="openEditRoomModal(room)">Edit</button>
-                <button class="btn btn-danger btn-xs m-2" (click)="deleteRoom(room.roomId)">Delete</button></td>
+                <button class="btn btn-danger btn-xs m-2" (click)="deleteRoom(room)">Delete</button></td>
             </tr>
           </tbody>
         </table>
@@ -66,8 +66,8 @@
           </thead>
           <tbody>
             <tr class="spaceUnder" *ngFor="let booking of tableData2">
-              <td style="min-width: 180px;"> <img width="40px" height="40px" src="/assets/roomB.webp"></td>
-              <td style="min-width: 180px;">{{booking.userId }}</td>
+                <td style="min-width: 180px;"> <img width="40px" height="40px" [src]="getRoomImageById(booking.roomId)"></td>
+                <td style="min-width: 180px;">{{booking.userId }}</td>
               <td>{{booking.fromDate }}</td>
               <td>{{booking.toDate }}</td>
               <td style="min-width: 150px;">{{getRoomTitleById(booking.roomId) }}</td>
@@ -125,6 +125,14 @@
             </div>
             
           </div><br>
+          <div class="row">
+            <div class="col">
+              <input type="file" accept="image/*" (change)="upload($event)" class="form-control" name="logo"
+              id="logo" required>
+  
+            </div>
+          </div><br>
+  
          
           <div class="row">
             <div class="col">
@@ -133,9 +141,8 @@
             <div class="col">
               <input type="text-area" class="form-control" placeholder="description" [(ngModel)]="newRoomData.description">
             </div>
-            <div class="col">
-              <input type="file" (change)="OnFileSelected($event)" class="form-control" [(ngModel)]="newRoomData.imgUrl">
-          </div>
+            
+        
           </div>
         </div>
         <div class="modal-footer">
