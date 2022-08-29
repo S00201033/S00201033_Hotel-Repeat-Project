@@ -41,14 +41,7 @@ export class CreateBookingPageComponent implements OnInit {
       }
       return;
     }
-    let request = {
-      bookingType: this.bookingType,
-      dateAndTime: this.dateTime,
-      witnessName: this.witnessName,
-      witnessContact: this.witnessContact,
-      description: this.description,
-      location: this.location
-    }
+    
 
     console.debug(`Token [${this.token}] generated`);
   }
